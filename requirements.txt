@@ -3,3 +3,4 @@ pytest
 mlflow
 streamlit 
 matplotlib
+dvc

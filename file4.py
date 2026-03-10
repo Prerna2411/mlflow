@@ -7,12 +7,6 @@ from sklearn.metrics import accuracy_score, confusion_matrix
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# import dagshub
-# dagshub.init(repo_owner='', repo_name='MLOPS-Experiments-with-MLFlow', mlflow=True)
-
-# mlflow.set_tracking_uri("https://dagshub.com/pprerna42/UPI.mlflow")
-
-
 import dagshub
 
 dagshub.init(repo_owner='pprerna42', repo_name='mlflow', mlflow=True)
@@ -25,7 +19,6 @@ wine = load_wine()
 X = wine.data
 y = wine.target
 
-
 # Train test split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.10, random_state=42)
 
@@ -37,7 +30,7 @@ n_estimators = 5
 ###
 mlflow.autolog()
 # Mention your experiment below
-mlflow.set_experiment('MLOPS-Exp2')
+mlflow.set_experiment('MLOPS-Exp3')
 
 with mlflow.start_run():
     rf = RandomForestClassifier(max_depth=max_depth, n_estimators=n_estimators, random_state=42)
@@ -66,7 +59,7 @@ with mlflow.start_run():
     mlflow.log_artifact(__file__)
 
     # tags
-    mlflow.set_tags({"Author": 'Vikash', "Project": "Wine Classification"})
+    mlflow.set_tags({"Author": 'pre', "Project": "Wine Classification"})
 
     # Log the model
     mlflow.sklearn.log_model(rf, "Random-Forest-Model")
